@@ -1,17 +1,29 @@
-package Game;
+/* Original Code
+ * https://github.com/dlwnvlf6/HurabonoProject/blob/master/%EC%9E%90%EB%B0%94%20369%EA%B2%8C%EC%9E%84%20%EB%91%98%EC%9D%B4%EC%84%9C%ED%95%98%EA%B8%B0
+ * modified by 이주필
+ * 
+ */
 
+package Game;
+import main.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 public class Game369 extends JFrame{
-    public Game369(){
+	//이름을 입력받아 화면에서 출력, 12/01 수정
+	String name1 = main.name1;
+	String name2 = main.name2;
+	
+	
+	public Game369(){
         this.setTitle("369게임 둘이하기");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(new GamePanel());
         this.setLocationRelativeTo(null);
-        this.setSize(320, 300);
+        this.setSize(350, 300);
         this.setVisible(true);
+        
     }
     
     class GamePanel extends JPanel{
@@ -25,8 +37,8 @@ public class Game369 extends JFrame{
         boolean isKeyPressed = false;//키를 눌렀는지 체크
 
         GamePanel(){
-            user[0]=new User("박지성, 키:AS",'a','s');
-            user[1]=new User("이청룡, 키:KL",'k','l');
+            user[0]=new User(name1 + " 키:AS",'a','s');
+            user[1]=new User(name2 +" 키:KL",'k','l');
 
             this.setLayout(null);
             this.addKeyListener(new KeyHandler());

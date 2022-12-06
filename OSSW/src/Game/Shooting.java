@@ -1,3 +1,10 @@
+/* Original Code
+ * https://github.com/dlwnvlf6/HurabonoProject/blob/master/%EC%9E%90%EB%B0%94%20%EA%B0%84%EB%8B%A8%ED%95%9C%20%EC%8A%88%ED%8C%85%20%EA%B2%8C%EC%9E%84
+ * modified by 이주필
+ * 12/05 현재까지 생성된 객체 수와 잡은 객체 수를 추가로 표기하였고, 잡은 객체 수가 100점이 되면 끝나게 수정 
+ * 
+ */
+
 package Game;
 
 import java.awt.*;
@@ -5,14 +12,19 @@ import java.awt.event.*;
 import java.awt.image.*;
 import java.util.ArrayList;
 import javax.swing.*;
-public class Ex5 extends JFrame implements Runnable, KeyListener {
+public class Shooting extends JFrame implements Runnable, KeyListener {
  private BufferedImage bi = null;
  private ArrayList msList = null;
  private ArrayList enList = null;
  private boolean left = false, right = false, up = false, down = false, fire = false;
- private boolean start = false, end = false;
+ public static boolean start = false;
+ public static boolean end = false;
  private int w = 300, h = 500, x = 130, y = 450, xw = 20, xh = 20;
- public Ex5() {
+ private int point;
+ private int encnt;
+ private long starttime;
+ 
+ public Shooting() {
   bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
   msList = new ArrayList();
   enList = new ArrayList();
@@ -24,11 +36,21 @@ public class Ex5 extends JFrame implements Runnable, KeyListener {
   this.setVisible(true); 
   Thread t = new Thread(this);
   t.start();
+  long stime = System.currentTimeMillis();
+	 
+  
  }
  
+ /*
+ public int point() {
+		return point;
+	 }
+ */
  public void run() {
-  try {
-   int msCnt = 0;
+	 
+	 try {
+   
+	int msCnt = 0;
    int enCnt = 0;
    while(true) {
     Thread.sleep(10);
@@ -52,6 +74,7 @@ public class Ex5 extends JFrame implements Runnable, KeyListener {
   } catch(Exception e) {
    e.printStackTrace();
   }
+  
  }
  public void fireMs() {
   if(fire) {
@@ -67,6 +90,7 @@ public class Ex5 extends JFrame implements Runnable, KeyListener {
    double ry = Math.random() * 50;
    Enemy en = new Enemy((int)rx, (int)ry);
    enList.add(en);
+   encnt++;
   }
  }
  public void crashChk() {
@@ -82,6 +106,7 @@ public class Ex5 extends JFrame implements Runnable, KeyListener {
     if(p.intersects((double)e.x, (double)e.y, (double)e.w, (double)e.h)) {
      msList.remove(i);
      enList.remove(j);
+     point++;
     }
    }
   }
@@ -90,9 +115,11 @@ public class Ex5 extends JFrame implements Runnable, KeyListener {
    int[] xpoints = {x, (x + xw), (x + xw), x};
    int[] ypoints = {y, y, (y + xh), (y + xh)};
    p = new Polygon(xpoints, ypoints, 4);
-   if(p.intersects((double)e.x, (double)e.y, (double)e.w, (double)e.h)) {
+   if(p.intersects((double)e.x, (double)e.y, (double)e.w, (double)e.h) || point == 100) {
     enList.remove(i);
     start = false;
+    point = 0;
+    encnt = 0;
     end = true;
    }
   }
@@ -104,8 +131,11 @@ public class Ex5 extends JFrame implements Runnable, KeyListener {
   gs.fillRect(0, 0, w, h);
   gs.setColor(Color.black);
   gs.drawString("Enemy 객체수 : " + enList.size(), 180, 50);
-  gs.drawString("Ms 객체수 : " + msList.size(), 180, 70);
+  gs.drawString("발사된 총알 수 : " + msList.size(), 180, 70);
   gs.drawString("게임시작 : Enter", 180, 90);
+  gs.drawString("잡은 Enemy 수 : " + point, 180, 110);
+  gs.drawString("총 Enemy 수 : " + encnt, 180, 130);
+  
   
   if(end) {
    gs.drawString("G A M E     O V E R", 100, 250);
@@ -189,12 +219,13 @@ public class Ex5 extends JFrame implements Runnable, KeyListener {
    fire = false;
    break;
   }
+ 
  }
  
  public void keyTyped(KeyEvent ke) {}
  
  public static void main(String[] args) {
-  Thread t = new Thread(new Ex5());
+  Thread t = new Thread(new Shooting());
   t.start();
  }
 }
@@ -222,5 +253,6 @@ class Enemy {
  }
  public void moveEn() {
   y++;
- } 
+ }
+ 
 }

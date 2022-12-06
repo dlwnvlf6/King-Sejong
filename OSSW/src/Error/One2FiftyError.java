@@ -15,11 +15,11 @@ import Game.One2FiftyGame;
 
 public class One2FiftyError extends JFrame{
 	public One2FiftyError(int turn) {
-		setTitle("����");
+		setTitle("오류");
 		JTextField txtfield = new JTextField();
-		JLabel label1 = new JLabel("�߸� �����̽��ϴ�!");
-		JLabel label2 = new JLabel("���� ���ʴ� "+turn+" �Դϴ�.");
-		JButton btn = new JButton("Ȯ��");
+		JLabel label1 = new JLabel("잘못 누르셨습니다!");
+		JLabel label2 = new JLabel("현재 차례는 "+turn+" 입니다.");
+		JButton btn = new JButton("확인");
 		JPanel MainContainer = new JPanel();
 		setContentPane(MainContainer);
 		

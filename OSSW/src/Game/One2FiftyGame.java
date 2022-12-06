@@ -1,3 +1,9 @@
+/* Original Code
+ * https://github.com/devGyu97/Java-Multiple-Game/tree/main/src/Game
+ * modified by 이주필
+ * 11/17 게임이 끝난 후 완료까지 걸린 시간을 출력하느 기능 추가
+ */
+
 package Game;
 
 import javax.swing.*;
@@ -95,7 +101,7 @@ public class One2FiftyGame extends JFrame {
 	public boolean CheckFin() {
 		int i;
 		
-		// ���� ����
+		
 		for (i = 0; i < 25; i++) {
 			if (!btn[i].getText().equals(" "))
 				break;

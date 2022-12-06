@@ -1,3 +1,8 @@
+/* Original Code https://github.com/dlwnvlf6/RSP/blob/main/RSP.java
+ * modified by 이주필 
+ * 12/06 가위바위보 사진 변경
+ */
+
 package Game;
 
 import java.awt.*;
@@ -19,9 +24,9 @@ public class RSP extends JFrame{
 	JLabel sla = new JLabel("1");
 	JLabel me;
 	JLabel AI;
-	ImageIcon imageIconR = new ImageIcon("images/R.jpg");
-	ImageIcon imageIconS = new ImageIcon("images/S.jpg");
-	ImageIcon imageIconP = new ImageIcon("images/P.jpg");
+	ImageIcon imageIconR = new ImageIcon("src/resources/r.jpg");
+	ImageIcon imageIconS = new ImageIcon("src/resources/s.jpg");
+	ImageIcon imageIconP = new ImageIcon("src/resources/p.jpg");
 	ImageIcon imageIconVS = new ImageIcon("images/vs.png");
 	
 	JButton[] btn = new JButton[3];
@@ -65,11 +70,6 @@ public class RSP extends JFrame{
 //		la.add(cPanel,BorderLayout.NORTH);
 		
 		
-		
-		
-		
-		
-		
 		/*
 		contentPane.setBackground(Color.yellow);
 		nPanel.setBackground(Color.yellow);
@@ -93,7 +93,7 @@ public class RSP extends JFrame{
 		cPanel.add(me);
 		cPanel.add(AI);
 		
-		setSize(600,600);
+		setSize(900,600);
 		setVisible(true);
 	}
 	

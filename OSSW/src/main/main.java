@@ -7,8 +7,19 @@ import java.awt.event.*;
 import Game.*;
 
 public class main extends JFrame {
+	public static String name1;
+	public static String name2;
 	main() {
 		setTitle("Game!");
+		/*
+		String name = JOptionPane.showInputDialog("Enter your name");
+		Container cp = getContentPane();
+	    cp.setLayout(new BorderLayout());
+	    JPanel p1 = new JPanel(new FlowLayout());
+	    p1.add(new JLabel(name));
+	    cp.add(p1);
+	    */
+	    
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -54,13 +65,15 @@ public class main extends JFrame {
 		
 		btn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				name1 = JOptionPane.showInputDialog("플레이어 1의 이름을 입력하세요");
+		        name2 = JOptionPane.showInputDialog("플레이어 2의 이름을 입력하세요");
 				new Game369();
 			}
-
 		});
 		btn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Ex5();
+				new Shooting();
+				
 			}
 
 		});
@@ -98,5 +111,6 @@ public class main extends JFrame {
 	
 	public static void main(String[] args) {
 		main mf = new main();
+		
 	}
 }

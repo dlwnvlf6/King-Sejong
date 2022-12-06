@@ -1,3 +1,7 @@
+/* Original Code
+ * https://github.com/janbodnar/Java-Snake-Game/blob/master/src/com/zetcode/Board.java
+ * 
+ */
 package Game;
 
 import java.awt.EventQueue;

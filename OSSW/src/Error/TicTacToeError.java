@@ -14,10 +14,10 @@ import javax.swing.JTextField;
 import Game.SetBoardSize;
 public class TicTacToeError extends JFrame{
 	public TicTacToeError() {
-		setTitle("����");
+		setTitle("오류");
 		JTextField txtfield = new JTextField();
-		JLabel label = new JLabel("���� ũ��� 3 �̻��̾�� �մϴ�!");
-		JButton btn = new JButton("�ٽ� ����");
+		JLabel label = new JLabel("보드 크기는 3 이상이어야 합니다!");
+		JButton btn = new JButton("다시 설정");
 		JPanel MainContainer = new JPanel();
 		setContentPane(MainContainer);
 		
